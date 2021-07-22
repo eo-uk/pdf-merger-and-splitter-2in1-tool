@@ -36,3 +36,14 @@ def split_pdf(path):
             mode="wb"
         ) as output:
             writer.write(output)
+            
+def get_paths():
+    ''' Prompts the user for PDF paths. Type 'done' to finish. '''
+    paths = []
+    while True:
+        answer = input('Please enter a path. Type "done" when you are done.').strip()
+        if answer:
+            if answer in ('done', 'DONE', 'Done'):
+                break
+            paths.append(answer)
+    return paths
