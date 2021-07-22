@@ -47,3 +47,30 @@ def get_paths():
                 break
             paths.append(answer)
     return paths
+
+def main():
+    try:
+        #Get paths as system arguments if any given
+        paths = sys.argv[1:]
+        #If no system argument was given
+        if not paths:
+            paths = get_paths()
+
+        if paths:
+            #If multiple PDF files are passed, merge them
+            if len(paths) > 1:
+                paths = sorted(paths) #All PDF paths sorted alphabetically
+                merge_pdf(paths)
+            #If a single PDF file is passed, split it
+            else:
+                path = paths[0]
+                split_pdf(path)
+            print('\nOperation Successful!')
+        else:
+            print('\nNo action taken as no path was provided.')
+            
+    except (PdfReadError, FileNotFoundError) as e:
+        print('\nError: ', e)
+        
+    finally:
+        input('\nPress any key to exit.')
