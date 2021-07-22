@@ -74,3 +74,7 @@ def main():
         
     finally:
         input('\nPress any key to exit.')
+
+        
+if __name__ == "__main__":
+    main()
